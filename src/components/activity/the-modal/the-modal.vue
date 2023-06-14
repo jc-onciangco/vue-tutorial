@@ -3,6 +3,10 @@ import { ref } from 'vue';
 import ModalBackdrop from './modal-backdrop.vue';
 import ModalContent from './modal-content.vue';
 
+defineProps<{
+  size?: 'sm' | 'lg' | 'full';
+}>();
+
 const isModalOpen = ref(false);
 
 const showModal = () => (isModalOpen.value = true);
@@ -16,9 +20,20 @@ defineExpose({
 
 <template>
   <ModalBackdrop v-if="isModalOpen" @close-modal="closeModal">
-    <ModalContent>
-      <template #modal-title> My Modal Title </template>
-      <template #default><div style="height: 1000px"></div></template>
+    <ModalContent
+      :class="{
+        'w-25': size === 'sm',
+        'w-50': !size,
+        'w-75': size === 'lg',
+        'w-100': size === 'full'
+      }"
+    >
+      <template #modal-title>
+        <slot name="title"></slot>
+      </template>
+      <template #default>
+        <slot name="body-content"></slot>
+      </template>
     </ModalContent>
   </ModalBackdrop>
 </template>

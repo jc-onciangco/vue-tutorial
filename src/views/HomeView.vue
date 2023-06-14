@@ -7,14 +7,16 @@ import BaseButton from '@/components/for-tutorial/base-button.vue';
 import TheModal from '@/components/activity/the-modal/the-modal.vue.js';
 import PageWithModal from '@/components/activity/page-with-modal.vue';
 import SampleSlot from '@/components/for-tutorial/sample-slot.vue';
+import SamplePage from '@/components/for-tutorial/sample-page.vue';
 </script>
 
 <template>
   <!-- <TheBasic /> -->
   <!-- <LifecycleHooks /> -->
   <!-- <PropsAndEmits /> -->
-  <PageWithModal />
+  <!-- <PageWithModal /> -->
   <!-- <SampleSlot /> -->
+  <SamplePage />
 </template>
 
 <style lang="scss"></style>

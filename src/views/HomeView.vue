@@ -4,10 +4,11 @@ import LifecycleHooks from '@/components/for-tutorial/lifecycle-hooks/lifecycle-
 import PropsAndEmits from '@/components/for-tutorial/props-and-emits/props-and-emits.vue';
 import TheBasic from '@/components/for-tutorial/the-basic.vue';
 import BaseButton from '@/components/for-tutorial/base-button.vue';
-import TheModal from '@/components/activity/the-modal/the-modal.vue.js';
+// import TheModal from '@/components/activity/the-modal/the-modal.vue.js';
 import PageWithModal from '@/components/activity/page-with-modal.vue';
 import SampleSlot from '@/components/for-tutorial/sample-slot.vue';
 import SamplePage from '@/components/for-tutorial/sample-page.vue';
+import Explore from '@/components/explore/explore.vue';
 </script>
 
 <template>
@@ -16,7 +17,8 @@ import SamplePage from '@/components/for-tutorial/sample-page.vue';
   <!-- <PropsAndEmits /> -->
   <!-- <PageWithModal /> -->
   <!-- <SampleSlot /> -->
-  <SamplePage />
+  <!-- <SamplePage /> -->
+  <Explore />
 </template>
 
 <style lang="scss"></style>

@@ -40,5 +40,6 @@ const handleClickCloseModal = () => {
     position: absolute;
     inset: 0;
   }
+
 }
 </style>

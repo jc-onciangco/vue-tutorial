@@ -1,32 +1,36 @@
 <script lang="ts" setup>
-import BaseButton from '@/components/for-tutorial/base-button.vue';
+import { ref, watch } from 'vue';
+import type { Idatasource } from '../explore.vue';
+import ModalImageDescription from './modal-components/modal-image-description.vue'
+import ModalCommentSection from './modal-components/modal-comment-section.vue'
+
+defineProps<{
+  dataSource?: Idatasource;
+}>();
+
+
 </script>
 
 <template>
-  <div class="custom-modal shadow-3 rounded-3">
-    <div class="d-flex flex-column h-100">
-      <slot name="modal-header">
-        <div
-          class="w-100 p-2 px-3 d-flex align-items-center justify-content-between bg-primary rounded-top"
-        >
-          <div><slot name="modal-title"></slot></div>
+  <div class="card-container">
+    <div class="card">
+      <div class="content">
+        <div class="image-section">
+          <slot name="image-slot">
+            <div>
+              <img class="image-size" :src="dataSource?.url"/>
+            </div>
+          </slot>
         </div>
-      </slot>
+        <div class="content-section">
+          <ModalImageDescription :image-title="dataSource?.title">
+          </ModalImageDescription>
+        </div>
 
-      <div class="flex-fill">
-        <slot></slot>
-      </div>
-
-      <slot name="modal-footer">
-        <div
-          class="w-100 p-2 px-3 d-flex align-items-center justify-content-between bg-primary bg-opacity-10 rounded-bottom"
-        >
-          <div></div>
-          <div>
-            <BaseButton> <template #label> Close </template></BaseButton>
+          <div class="content-comment">
+            <ModalCommentSection></ModalCommentSection>
           </div>
-        </div>
-      </slot>
+      </div>
     </div>
   </div>
 </template>
@@ -36,4 +40,53 @@ import BaseButton from '@/components/for-tutorial/base-button.vue';
   //   min-height: 500px;
   background-color: white;
 }
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(0, 1fr);
+  margin: auto;
+  height: 31rem;
+  width: 60rem;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.content {
+  padding-left: 10px;
+  padding-top: 10px;
+  max-height: 100%;
+}
+
+.image-section {
+  float: left;
+  width: 50%;
+}
+
+.content-section {
+  display: grid;
+  float: left;
+  width: 50%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+}
+
+.content-user {
+  height: 50%;
+  padding-bottom: 1%;
+}
+
+.content-comment {
+  height: 50%;
+}
+
+.image-size {
+  width: 100%;
+  max-height: 100%;
+}
+
 </style>

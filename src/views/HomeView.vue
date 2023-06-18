@@ -9,6 +9,7 @@ import PageWithModal from '@/components/activity/page-with-modal.vue';
 import SampleSlot from '@/components/for-tutorial/sample-slot.vue';
 import SamplePage from '@/components/for-tutorial/sample-page.vue';
 import Explore from '@/components/explore/explore.vue';
+import ApiActivity from '@/components/api-activity/api-activity.vue';
 </script>
 
 <template>
@@ -18,7 +19,8 @@ import Explore from '@/components/explore/explore.vue';
   <PageWithModal />
   <!-- <SampleSlot /> -->
   <!-- <SamplePage /> -->
-  <!-- <Explore /> -->
+  <!-- <!-- <Explore /> -->
+  <ApiActivity /> -->
 </template>
 
 <style lang="scss"></style>

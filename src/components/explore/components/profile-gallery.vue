@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 import GalleryModal from './gallery-modal.vue';
+import type { Idatasource } from '../explore.vue';
+
 
 export interface Iimages {
     imgUrl: 'Url',
@@ -8,37 +10,41 @@ export interface Iimages {
 }
 
 const refGalleryModal = ref<InstanceType<typeof GalleryModal>>();
-
 defineProps<{
-    dataSource: Record<Iimages['imgUrlKey'], any>[]
+    dataSource?: Idatasource[]
 }>();
 
-const handleClickShowGalleryModal = () => {
+const selectedDataSource = ref<Idatasource>();
+
+const handleClickShowGalleryModal = (data: Idatasource) => {
+    selectedDataSource.value = data;
+    nextTick();
     refGalleryModal.value?.showModal();
 };
 
 </script>
 
 <template>
-    <GalleryModal ref="refGalleryModal">
-        <template #title>IMG Title</template>
-        <template #body-content>Img Content</template>
-    </GalleryModal>
-
     <slot name="user-gallery">
-        <div class="gallery" id="gallery">
-            <div v-for="data in dataSource" class="image image-container">
-                <img :src="data.url" @click="handleClickShowGalleryModal()">
-            </div>
+      <div class="gallery" id="gallery">
+        <div v-for="data in dataSource" class="image-container">
+          <img :src="data.url" @click="handleClickShowGalleryModal(data)">
+          
         </div>
+        <GalleryModal ref="refGalleryModal" :data-source="selectedDataSource">
+          <template #image-slot></template>
+        </GalleryModal>
+      </div>
     </slot>
 </template>
 
 <style lang="scss">
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .gallery .image {

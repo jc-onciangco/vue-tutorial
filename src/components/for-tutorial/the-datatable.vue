@@ -7,20 +7,23 @@ export interface IColumns {
 defineProps<{
   column: IColumns[];
   dataSource: Record<IColumns['headerKey'], any>[];
+  id: string | number;
 }>();
 </script>
 
 <template>
   <table class="table w-75 table-dark table-striped">
     <thead>
-      <tr>
+      <tr class="align-middle">
         <template v-for="col in column" :key="col.headerKey">
-          <th scope="col">{{ col.headerName }}</th>
+          <th scope="col ">
+            <slot :name="`header-th-${col.headerKey}`">{{ col.headerName }}</slot>
+          </th>
         </template>
       </tr>
     </thead>
     <tbody>
-      <template v-for="item in dataSource" :key="item.id">
+      <template v-for="item in dataSource" :key="item[id]">
         <tr>
           <template v-for="col in column" :key="col.headerKey">
             <td>
@@ -31,33 +34,10 @@ defineProps<{
       </template>
     </tbody>
   </table>
-  <!-- <table class="table w-75 table-dark table-striped">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table> -->
 </template>
+
+<style lang="scss" scoped>
+tbody {
+  font-size: 0.8rem;
+}
+</style>

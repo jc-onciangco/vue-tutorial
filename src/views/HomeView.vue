@@ -15,10 +15,10 @@ import Explore from '@/components/explore/explore.vue';
   <!-- <TheBasic /> -->
   <!-- <LifecycleHooks /> -->
   <!-- <PropsAndEmits /> -->
-  <!-- <PageWithModal /> -->
+  <PageWithModal />
   <!-- <SampleSlot /> -->
   <!-- <SamplePage /> -->
-  <Explore />
+  <!-- <Explore /> -->
 </template>
 
 <style lang="scss"></style>

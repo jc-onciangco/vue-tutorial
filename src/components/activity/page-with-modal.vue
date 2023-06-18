@@ -17,7 +17,7 @@ const handleClickShowModal2 = () => {
 
 <template>
   <TheLayout>
-    <TheModal ref="refTheModal1" :size="'full'">
+    <TheModal ref="refTheModal1" :size="'lg'">
       <template #title>MODAL 1</template>
       <template #body-content>BODY CONTENT 1</template>
     </TheModal>

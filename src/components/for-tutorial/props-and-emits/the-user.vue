@@ -6,13 +6,15 @@ export interface IFriend {
   name: string;
 }
 
-const props = defineProps<{
+export interface IProps {
   name: string;
   age: number;
   isOnline: boolean;
   friends?: IFriend[];
   hasRemovedItemCached?: boolean;
-}>();
+}
+
+const props = defineProps<IProps>();
 
 const emit = defineEmits<{
   (e: 'onRemoveFriend', id: IFriend['id']): void;
@@ -45,6 +47,7 @@ defineExpose({
         <div>Friends</div>
         <button v-if="hasRemovedItemCached" @click="handleClickUndoRemovedItem">Undo</button>
       </div>
+
       <div v-if="friends && !areAllFriendsHide" class="d-flex flex-column gap-2">
         <template v-for="(friend, index) in friends" :key="friend.id">
           <div

@@ -16,11 +16,11 @@ import ApiActivity from '@/components/api-activity/api-activity.vue';
   <!-- <TheBasic /> -->
   <!-- <LifecycleHooks /> -->
   <!-- <PropsAndEmits /> -->
-  <PageWithModal />
+  <!-- <PageWithModal /> -->
   <!-- <SampleSlot /> -->
   <!-- <SamplePage /> -->
-  <!-- <!-- <Explore /> -->
-  <ApiActivity /> -->
+  <!--<Explore /> -->
+  <ApiActivity />
 </template>
 
 <style lang="scss"></style>

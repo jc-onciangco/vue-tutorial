@@ -21,7 +21,7 @@ const headerColumn = [
   }
 ];
 
-const dataSource = ref<Idatasource>();
+const dataSource = ref<Idatasource[]>();
 const currentPage = ref(1);
 const isPrevDisabled = ref(true);
 const isNextDisabled = ref(false);
@@ -63,7 +63,7 @@ const handleClickNextPage = () => currentPage.value++;
 watch(
   () => currentPage.value,
   async (newValue) => {
-    dataSource.value = await fetchApi();
+    handleFetchApi();
   }
 );
 </script>

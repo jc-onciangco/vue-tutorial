@@ -13,7 +13,10 @@ const handleClickShowModal = () => {
 
 <template>
   <TheLayout>
-    <TheModal ref="refTheModal" />
+    <TheModal ref="refTheModal" >
+      <template #title>Title</template>
+      <template #body-content>Contents</template>
+    </TheModal>
     <BaseButton @click="handleClickShowModal">
       <template #label> Show Modal </template>
     </BaseButton>

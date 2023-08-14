@@ -9,7 +9,11 @@ import BaseButton from '@/components/for-tutorial/base-button.vue';
         <div
           class="w-100 p-2 px-3 d-flex align-items-center justify-content-between bg-primary rounded-top"
         >
-          <div><slot name="modal-title"></slot></div>
+          <div>
+            <slot name="modal-title">
+              <small>template here with #modal-title</small>
+            </slot>
+          </div>
           <div>X</div>
         </div>
       </slot>

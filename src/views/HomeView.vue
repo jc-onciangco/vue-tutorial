@@ -4,12 +4,12 @@ import LifecycleHooks from '@/components/for-tutorial/lifecycle-hooks/lifecycle-
 import PropsAndEmits from '@/components/for-tutorial/props-and-emits/props-and-emits.vue';
 import TheBasic from '@/components/for-tutorial/the-basic.vue';
 import BaseButton from '@/components/for-tutorial/base-button.vue';
-import TheModal from '@/components/activity/the-modal/the-modal.vue.js';
 import PageWithModal from '@/components/activity/page-with-modal.vue';
 import SampleSlot from '@/components/for-tutorial/sample-slot.vue';
 </script>
 
 <template>
+  <TheModal />
   <!-- <TheBasic /> -->
   <!-- <LifecycleHooks /> -->
   <!-- <PropsAndEmits /> -->

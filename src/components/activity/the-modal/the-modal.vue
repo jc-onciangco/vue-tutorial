@@ -17,7 +17,7 @@ defineExpose({
 <template>
   <ModalBackdrop v-if="isModalOpen" @close-modal="closeModal">
     <ModalContent>
-      <template #modal-title> My Modal Title </template>
+      <template #modal-title> </template>
       <template #default><div style="height: 1000px"></div></template>
     </ModalContent>
   </ModalBackdrop>

@@ -11,31 +11,21 @@ const props = defineProps<{
   age: number;
   isOnline: boolean;
   friends?: IFriend[];
+  hasRemovedItemCached?: boolean;
 }>();
 
 const emit = defineEmits<{
   (e: 'onRemoveFriend', id: IFriend['id']): void;
-  (e: 'onUndoRemovedItem', id: number): void;
+  (e: 'onUndoRemovedItem'): void;
 }>();
 
 const areAllFriendsHide = ref<boolean>(false);
-const removedItemCache = ref<number>(0);
 
-const handleClickRemove = (id: IFriend['id']) => {
-  removedItemCache.value = id;
+const handleClickRemove = (id: IFriend['id']) => emit('onRemoveFriend', id);
 
-  emit('onRemoveFriend', id);
-};
+const hideAllFriends = () => (areAllFriendsHide.value = !areAllFriendsHide.value);
 
-const hideAllFriends = () => {
-  areAllFriendsHide.value = !areAllFriendsHide.value;
-};
-
-const handleClickUndoRemovedItem = () => {
-  emit('onUndoRemovedItem', removedItemCache.value);
-
-  removedItemCache.value = 0;
-};
+const handleClickUndoRemovedItem = () => emit('onUndoRemovedItem');
 
 defineExpose({
   areAllFriendsHide,
@@ -53,7 +43,7 @@ defineExpose({
     <div>
       <div class="d-flex align-items-center justify-content-between">
         <div>Friends</div>
-        <button v-if="removedItemCache" @click="handleClickUndoRemovedItem">Undo</button>
+        <button v-if="hasRemovedItemCached" @click="handleClickUndoRemovedItem">Undo</button>
       </div>
       <div v-if="friends && !areAllFriendsHide" class="d-flex flex-column gap-2">
         <template v-for="(friend, index) in friends" :key="friend.id">

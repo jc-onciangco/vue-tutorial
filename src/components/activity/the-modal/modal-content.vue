@@ -3,7 +3,7 @@ import BaseButton from '@/components/for-tutorial/base-button.vue';
 </script>
 
 <template>
-  <div class="custom-modal shadow-3 rounded-3 w-75">
+  <div class="custom-modal shadow-3 rounded-3">
     <div class="d-flex flex-column h-100">
       <slot name="modal-header">
         <div

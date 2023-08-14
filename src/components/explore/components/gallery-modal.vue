@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import ModalBackdrop from './modal-backdrop.vue';
-import ModalContent from './modal-content.vue';
+import ModalBackdrop from './gallery-modal-backdrop.vue';
+import ModalContent from './gallery-modal-content.vue';
+import type { Idatasource } from '../explore.vue';
 
 defineProps<{
   size?: 'sm' | 'lg' | 'full';
+  dataSource?: Idatasource;
 }>();
 
 const isModalOpen = ref(false);
@@ -20,7 +22,8 @@ defineExpose({
 
 <template>
   <ModalBackdrop v-if="isModalOpen" @close-modal="closeModal">
-    <ModalContent
+    <ModalContent 
+      :data-source="dataSource"
       :class="{
         'w-25': size === 'sm',
         'w-50': !size,

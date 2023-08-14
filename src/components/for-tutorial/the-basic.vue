@@ -53,14 +53,16 @@ watch(
         <span class="fw-semibold text-success">{{ textMessage }}</span>
       </div>
 
-      <div>ADD BY 3 = {{ userForms.password }}</div>
+      <div>ADD BY 3</div>
 
       <div class="mt-2">
         <div
-          class="blue-box"
+          class="blue-box d-flex align-items-center justify-content-center"
           :style="{ height: `${boxScale * 20}px`, aspectRatio: '1/1' }"
           @dblclick="counter = 1"
-        ></div>
+        >
+          {{ addBy3 }}
+        </div>
 
         <div class="mt-2">
           click increment to scale-up the box size in
@@ -106,7 +108,7 @@ watch(
 
 <style lang="scss" scoped>
 .blue-box {
-  background-color: green;
+  background-color: blue;
   transition: all 0.2s linear;
 
   &:hover {

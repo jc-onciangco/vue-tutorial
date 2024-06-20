@@ -6,6 +6,7 @@ import TheLayout from './layouts/the-layout.vue';
 //refs with initial value
 const counter = ref(0);
 
+const boxDefaultSize = ref(20);
 const boxScale = ref(1);
 
 const userForms = reactive({
@@ -15,9 +16,13 @@ const userForms = reactive({
 
 const textMessage = ref('Hello, world!');
 
-const addBy3 = computed(() => {
-  return counter.value + 3;
+const boxPixel = computed(() => {
+  return boxScale.value * boxDefaultSize.value;
 });
+
+// const addBy3 = computed(() => {
+//   return counter.value + 3;
+// });
 
 const handleClickIncrement = (step?: number) => {
   if (step) {
@@ -36,11 +41,9 @@ function handleClickDecrement() {
 }
 
 watch(
-  () => addBy3.value,
-  (newValue, oldValue) => {
-    if (newValue > 0) {
-      boxScale.value = newValue;
-    }
+  () => counter.value,
+  (newVal, oldVal) => {
+    boxScale.value = newVal;
   }
 );
 </script>
@@ -48,32 +51,31 @@ watch(
 <template>
   <TheLayout>
     <div>
-      <div>
+      <div v-if="false">
         Use Double Curly Braces to render the data from js to html.
         <span class="fw-semibold text-success">{{ textMessage }}</span>
       </div>
 
-      <div>ADD BY 3</div>
+      <!-- <div>ADD BY 3</div> -->
 
       <div class="mt-2">
         <div
           class="blue-box d-flex align-items-center justify-content-center"
-          :style="{ height: `${boxScale * 20}px`, aspectRatio: '1/1' }"
+          :style="{ height: `${boxPixel}px`, aspectRatio: '1/1' }"
           @dblclick="counter = 1"
-        >
-          {{ addBy3 }}
-        </div>
+        ></div>
 
         <div class="mt-2">
-          click increment to scale-up the box size in
-          <span class="fw-bold text-success">{{ boxScale * 20 }}px</span>. Double click the box to
-          reset to default
+          Click increment to scale-up the box size in
+          <span class="fw-bold text-success">{{ boxPixel }}px</span>. Double click the box to reset
+          to default
         </div>
       </div>
 
-      <div>The Counter {{ counter }}</div>
+      <br />
 
-      <div class="d-flex gap-2 mt-3">
+      <div><span class="fw-semibold">The Counter: </span>{{ counter }}</div>
+      <div class="d-flex gap-2 mt-2">
         <BaseButton @click="handleClickIncrement()">
           <template #label> Increment </template>
           <template #left-icon>
@@ -102,6 +104,19 @@ watch(
           <template #label> Reset </template>
         </BaseButton>
       </div>
+
+      <br />
+      <br />
+
+      <div><span class="fw-semibold">Box Size: </span>{{ boxDefaultSize }}</div>
+      <div class="mt-2">
+        <input type="text" v-model="boxDefaultSize" class="text-end form-control" />
+      </div>
+
+      <br />
+
+      <div><span class="fw-semibold">Box Scale: </span>{{ boxScale }}</div>
+      <div class="mt-2"><input type="text" v-model="boxScale" class="text-end form-control" /></div>
     </div>
   </TheLayout>
 </template>

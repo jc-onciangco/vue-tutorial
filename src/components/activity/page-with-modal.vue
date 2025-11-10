@@ -23,7 +23,7 @@ const handleClickShowModal2 = () => {
     </TheModal>
 
     <TheModal ref="refTheModal2" :size="'sm'">
-      <template #title>MODAL 2</template>
+      <template #title="{ modalname }">MODAL 2 {{ modalname }}</template>
       <template #body-content>BODY CONTENT 2</template>
     </TheModal>
 

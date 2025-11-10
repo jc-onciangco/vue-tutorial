@@ -84,6 +84,7 @@ const handleAddUser = () => {
 <template>
   <TheLayout>
     <div class="d-flex flex-column gap-4">
+      {{ removedItemCache }}
       <TheUser
         ref="refTheUser"
         :name="'Mark'"

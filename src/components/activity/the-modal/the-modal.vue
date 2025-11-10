@@ -9,6 +9,8 @@ defineProps<{
 
 const isModalOpen = ref(false);
 
+const name = ref('MODAL');
+
 const showModal = () => (isModalOpen.value = true);
 const closeModal = () => (isModalOpen.value = false);
 
@@ -21,16 +23,19 @@ defineExpose({
 <template>
   <ModalBackdrop v-if="isModalOpen" @close-modal="closeModal">
     <ModalContent
-      :class="{
-        'w-25': size === 'sm',
-        'w-50': !size,
-        'w-75': size === 'lg',
-        'w-100': size === 'full'
-      }"
+      :class="[
+        {
+          'w-25': size === 'sm',
+          'w-50': !size,
+          'w-75': size === 'lg',
+          'w-100': size === 'full'
+        }
+      ]"
     >
       <template #modal-title>
-        <slot name="title"></slot>
+        <slot name="title" :modalname="name"></slot>
       </template>
+
       <template #default>
         <slot name="body-content"></slot>
       </template>

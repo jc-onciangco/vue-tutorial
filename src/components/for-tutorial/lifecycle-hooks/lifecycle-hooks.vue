@@ -1,27 +1,31 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import TheLayout from '@/components/for-tutorial/layouts/the-layout.vue'
-import ToastNotif from './toast-notif.vue'
-import BaseButton from '../base-button.vue'
+import { ref } from 'vue';
+import TheLayout from '@/components/for-tutorial/layouts/the-layout.vue';
+import ToastNotif from './toast-notif.vue';
+import BaseButton from '../base-button.vue';
 
-const isToastShow = ref(false)
+const isToastShow = ref(false);
 
-const refToastNotif = ref<InstanceType<typeof ToastNotif>>()
+const refToastNotif = ref<InstanceType<typeof ToastNotif>>();
 
 const handleShowToast = () => {
-  isToastShow.value = !isToastShow.value
-}
+  isToastShow.value = !isToastShow.value;
+};
 
 const handleClickChangeMessage = () => {
-  refToastNotif.value?.changeMessage('Universe')
-}
+  refToastNotif.value?.changeMessage('Universe');
+};
 
 const handleClickChangeStyle = () => {
   refToastNotif.value?.changeStyle({
     backgroundColor: 'blue',
     color: 'white'
-  })
-}
+  });
+};
+
+const handleClickRemoveToast = () => {
+  isToastShow.value = false;
+};
 </script>
 
 <template>
@@ -41,6 +45,10 @@ const handleClickChangeStyle = () => {
 
       <BaseButton @click="handleClickChangeStyle">
         <template #label> Change Style </template>
+      </BaseButton>
+
+      <BaseButton @click="handleClickRemoveToast">
+        <template #label>Remove toast</template>
       </BaseButton>
     </div>
   </TheLayout>

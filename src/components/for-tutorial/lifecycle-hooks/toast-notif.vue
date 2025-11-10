@@ -9,50 +9,51 @@ import {
   onUpdated,
   onBeforeUpdate,
   type CSSProperties
-} from 'vue'
+} from 'vue';
 
-const message = ref('Hello World!')
+const message = ref('Hello World!');
 const style = reactive<CSSProperties>({
   backgroundColor: 'yellow',
   color: 'black'
-})
+});
 
 onMounted(() => {
-  console.log('The toast was mounted')
-})
+  console.log('The toast was mounted');
+});
 
 onBeforeMount(() => {
-  console.log('The toast is about to mount')
-})
+  console.log('The toast is about to mount');
+});
 
 onUnmounted(() => {
-  console.log('The toast was unmounted')
-})
+  console.log('The toast was unmounted');
+});
 
 onBeforeUnmount(() => {
-  console.log('The toast is about to unmount')
-})
+  console.log('The toast is about to unmount');
+});
 
 onBeforeUpdate(() => {
-  console.log('The toast component is about to update')
-})
+  console.log('The toast component is about to update');
+});
 
 onUpdated(() => {
-  console.log('The toast component was updated')
-})
+  console.log('The toast component was updated');
+});
 
 const changeMessage = (_message: string) => {
-  message.value = `Hello ${_message}`
-}
+  message.value = `Hello ${_message}`;
+};
 
 const changeStyle = (_style: CSSProperties) => {
-  Object.assign(style, _style)
-}
+  Object.assign(style, _style);
+};
 
 defineExpose({
   changeMessage,
-  changeStyle
-})
+  changeStyle,
+  message
+});
 </script>
 
 <template>
